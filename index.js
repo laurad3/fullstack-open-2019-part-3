@@ -4,30 +4,30 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 3001;
-const morgan = require('morgan');
+// const morgan = require('morgan');
 const cors = require('cors');
 
 app.use(cors());
 app.use(express.static('build'));
 app.use(bodyParser.json());
 
-const requestLogger = (req, res, next) => {
-    console.log('Method:', req.method);
-    console.log('Path:', req.path);
-    console.log('Body:', req.body);
-    console.log('---');
-    next();
-};
+// const requestLogger = (req, res, next) => {
+//     console.log('Method:', req.method);
+//     console.log('Path:', req.path);
+//     console.log('Body:', req.body);
+//     console.log('---');
+//     next();
+// };
 
-app.use(requestLogger);
+// app.use(requestLogger);
 
-morgan.token('body', (req, res) => {
-    if (req.method === 'POST') {
-        return JSON.stringify(req.body);
-    }
-});
+// morgan.token('body', (req, res) => {
+//     if (req.method === 'POST') {
+//         return JSON.stringify(req.body);
+//     }
+// });
 
-app.use(morgan(':method :url :status :res[content-length] - :response-time ms :body'));
+// app.use(morgan(':method :url :status :res[content-length] - :response-time ms :body'));
 
 let persons = [
     {
